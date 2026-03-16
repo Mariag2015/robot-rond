@@ -97,7 +97,7 @@
             La caméra permet au robot de capturer des images et de détecter des objets
             ou des mouvements dans son environnement.
         </p>
-        <img src="camera.jpg" alt="Caméra du robot">
+        <img src="Caméra.jpg" alt="Caméra du robot">
         <p>Datasheet :
             <a href="https://exemple.com/datasheet-camera" target="_blank">Voir la datasheet</a>
         </p>
@@ -109,7 +109,7 @@
             L’écran tactile sert d’interface utilisateur pour afficher des informations
             et permettre le contrôle du robot.
         </p>
-        <img src="ecran.jpg" alt="Écran tactile">
+        <img src="Écran tactile.jpg" alt="Écran tactile">
         <p>Datasheet :
             <a href="https://exemple.com/datasheet-ecran" target="_blank">Voir la datasheet</a>
         </p>
@@ -121,7 +121,7 @@
             Le bras robotisé permet au robot de saisir, déplacer ou manipuler des objets
             avec précision.
         </p>
-        <img src="bras.jpg" alt="Bras robotisé">
+        <img src="Bras de robot.jpg" alt="Bras robotisé">
         <p>Datasheet :
             <a href="https://exemple.com/datasheet-bras" target="_blank">Voir la datasheet</a>
         </p>
@@ -133,7 +133,7 @@
             Le capteur infrarouge est utilisé pour détecter des obstacles ou mesurer
             des distances.
         </p>
-        <img src="capteur.jpg" alt="Capteur infrarouge">
+        <img src="capteur infrarouge.jpg" alt="Capteur infrarouge">
         <p>Datasheet :
             <a href="https://exemple.com/datasheet-capteur" target="_blank">Voir la datasheet</a>
         </p>
