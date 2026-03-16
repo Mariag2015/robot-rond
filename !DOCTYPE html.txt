@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Robot Intelligent</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            background-color: #eef2f7;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            color: white;
+            margin: 0;
+        }
+
+        section {
+            margin: 30px auto;
+            padding: 20px;
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        img {
+            width: 260px;
+            display: block;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        a {
+            color: #004aad;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Couleurs par section */
+        .intro {
+            background-color: #ffffff;
+            border-left: 8px solid #4e4376;
+        }
+
+        .camera {
+            background-color: #e3f2fd;
+            border-left: 8px solid #2196f3;
+        }
+
+        .ecran {
+            background-color: #e8f5e9;
+            border-left: 8px solid #4caf50;
+        }
+
+        .bras {
+            background-color: #fff3e0;
+            border-left: 8px solid #ff9800;
+        }
+
+        .capteur {
+            background-color: #fce4ec;
+            border-left: 8px solid #e91e63;
+        }
+
+        .ressources {
+            background-color: #ede7f6;
+            border-left: 8px solid #673ab7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Projet : Robot Intelligent</h1>
+
+    <section class="intro">
+        <h2>Explication du projet</h2>
+        <p>
+            Ce projet consiste à concevoir un robot intelligent capable d’interagir
+            avec son environnement grâce à plusieurs composants électroniques
+            tels qu’une caméra, un écran tactile, un bras robotisé et un capteur infrarouge.
+        </p>
+    </section>
+
+    <section class="camera">
+        <h2>Caméra</h2>
+        <p>
+            La caméra permet au robot de capturer des images et de détecter des objets
+            ou des mouvements dans son environnement.
+        </p>
+        <img src="images/camera.jpg" alt="Caméra du robot">
+        <p>Datasheet :
+            <a href="https://exemple.com/datasheet-camera" target="_blank">Voir la datasheet</a>
+        </p>
+    </section>
+
+    <section class="ecran">
+        <h2>Écran tactile</h2>
+        <p>
+            L’écran tactile sert d’interface utilisateur pour afficher des informations
+            et permettre le contrôle du robot.
+        </p>
+        <img src="images/ecran.jpg" alt="Écran tactile">
+        <p>Datasheet :
+            <a href="https://exemple.com/datasheet-ecran" target="_blank">Voir la datasheet</a>
+        </p>
+    </section>
+
+    <section class="bras">
+        <h2>Bras robotisé</h2>
+        <p>
+            Le bras robotisé permet au robot de saisir, déplacer ou manipuler des objets
+            avec précision.
+        </p>
+        <img src="images/bras.jpg" alt="Bras robotisé">
+        <p>Datasheet :
+            <a href="https://exemple.com/datasheet-bras" target="_blank">Voir la datasheet</a>
+        </p>
+    </section>
+
+    <section class="capteur">
+        <h2>Capteur infrarouge</h2>
+        <p>
+            Le capteur infrarouge est utilisé pour détecter des obstacles ou mesurer
+            des distances.
+        </p>
+        <img src="images/capteur.jpg" alt="Capteur infrarouge">
+        <p>Datasheet :
+            <a href="https://exemple.com/datasheet-capteur" target="_blank">Voir la datasheet</a>
+        </p>
+    </section>
+
+    <section class="ressources">
+        <h2>Ressources utilisées</h2>
+        <ul>
+            <li>HTML / CSS</li>
+            <li>Arduino / Raspberry Pi</li>
+            <li>Datasheets des composants</li>
+            <li>Documentation en ligne</li>
+        </ul>
+    </section>
+
+</body>
+</html>
