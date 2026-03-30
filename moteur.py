@@ -1,0 +1,33 @@
+import time
+import RPi.GPIO as GPIO
+
+#moteurs
+GPIO_PIN_VIT_GAUCHE = 27
+GPIO_PIN_VIT_DROITE = 23
+GPIO_PIN_DIR_GAUCHE = 17
+GPIO_PIN_DIR_DROITE = 22
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(GPIO_PIN_VIT_GAUCHE, GPIO.OUT)
+GPIO.setup(GPIO_PIN_VIT_DROITE, GPIO.OUT)
+GPIO.setup(GPIO_PIN_DIR_GAUCHE, GPIO.OUT)
+GPIO.setup(GPIO_PIN_DIR_DROITE, GPIO.OUT)
+
+def stop():
+    GPIO.output(GPIO_PIN_VIT_GAUCHE, GPIO.LOW)
+    GPIO.output(GPIO_PIN_VIT_DROITE, GPIO.LOW)
+    GPIO.output(GPIO_PIN_DIR_GAUCHE, GPIO.LOW)
+    GPIO.output(GPIO_PIN_DIR_DROITE, GPIO.LOW)
+
+def droite(): 
+    GPIO.output(GPIO_PIN_VIT_GAUCHE, GPIO.HIGH)
+    GPIO.output(GPIO_PIN_VIT_DROITE, GPIO.HIGH)
+    GPIO.output(GPIO_PIN_DIR_GAUCHE, GPIO.HIGH)
+    GPIO.output(GPIO_PIN_DIR_DROITE, GPIO.HIGH)
+while True:
+    print('fini')
+    time.sleep(1)
+    stop()
+    time.sleep(1)
+    droite()
+GPIO.cleanup()
+
