@@ -1,0 +1,6 @@
+va0.val=va0.val+1
+if(va0.val>56)
+{
+  va0.val=0
+}
+loading.pic=va0.val
