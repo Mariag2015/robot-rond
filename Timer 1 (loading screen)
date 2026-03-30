@@ -1,0 +1,5 @@
+va0.val=va0.val+1
+if(va0.val>20)
+{
+  page home
+}
