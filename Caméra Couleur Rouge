@@ -1,0 +1,108 @@
+import cv2
+import numpy as np
+
+def detect_red_ball_on_frame(frame, min_radius=10, max_radius=400, param1=50, param2=20, min_dist=20):
+    """
+    Detects only strong red circular objects in a video frame (anti-orange).
+    """
+    if frame is None or frame.size == 0:
+        print("Error: Empty frame.")
+        return None, None, None, None, None
+
+    # Convert to HSV
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    # 🔴 Strict red ranges (reduced orange detection)
+    lower_red1 = np.array([0, 160, 120])
+    upper_red1 = np.array([5, 255, 255])
+
+    lower_red2 = np.array([175, 160, 120])
+    upper_red2 = np.array([180, 255, 255])
+
+    mask1 = cv2.inRange(hsv, lower_red1, upper_red1)
+    mask2 = cv2.inRange(hsv, lower_red2, upper_red2)
+    mask = cv2.bitwise_or(mask1, mask2)
+
+    # 🔴 Extra filter: ensure red is dominant (removes orange)
+    b, g, r = cv2.split(frame)
+    red_dominant = (r > g + 50) & (r > b + 50)
+    mask = mask & (red_dominant.astype(np.uint8) * 255)
+
+    # 🔴 Clean mask (better than erode/dilate alone)
+    kernel = np.ones((5, 5), np.uint8)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_DILATE, kernel)
+
+    # Apply mask BEFORE grayscale
+    masked = cv2.bitwise_and(frame, frame, mask=mask)
+    gray = cv2.cvtColor(masked, cv2.COLOR_BGR2GRAY)
+
+    # Blur
+    gray_blurred = cv2.GaussianBlur(gray, (7, 7), 1.5)
+
+    # Detect circles
+    circles = cv2.HoughCircles(
+        gray_blurred,
+        cv2.HOUGH_GRADIENT,
+        1,
+        min_dist,
+        param1=param1,
+        param2=param2,
+        minRadius=min_radius,
+        maxRadius=max_radius,
+    )
+
+    if circles is not None:
+        circles = np.uint16(np.around(circles[0, :]))
+        return circles.tolist(), hsv, mask, gray, gray_blurred
+    else:
+        return None, hsv, mask, gray, gray_blurred
+
+
+def draw_circles_on_frame(frame, circles):
+    """Draw circles on frame."""
+    if frame is None or frame.size == 0:
+        print("Error: Empty frame.")
+        return
+
+    if circles is not None:
+        for x, y, r in circles:
+            cv2.circle(frame, (x, y), r, (0, 255, 0), 2)
+            cv2.circle(frame, (x, y), 2, (0, 0, 255), 3)
+
+    cv2.imshow("Detected Red Ball", frame)
+
+
+# Open camera
+cap = cv2.VideoCapture(0)
+if not cap.isOpened():
+    print("Error: Could not open camera.")
+    exit()
+
+while True:
+    ret, frame = cap.read()
+
+    if not ret:
+        print("Error: Failed to capture frame.")
+        break
+
+    # Detect red ball
+    circles, hsv, mask, gray, gray_blurred = detect_red_ball_on_frame(frame)
+
+    # Draw result
+    draw_circles_on_frame(frame.copy(), circles)
+
+    # Debug windows
+    if hsv is not None:
+        cv2.imshow("HSV", hsv)
+    if gray is not None:
+        cv2.imshow("Gray", gray)
+    if mask is not None:
+        cv2.imshow("Mask", mask)
+
+    # Quit with 'q'
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
